@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct myarray
+{
+int t_size;
+int u_size;
+int* ptr;
+};
+void myarray(struct myarray* a,int t,int u)
+{
+a->t_size=t;
+a->u_size=u;
+a->ptr=(int*)malloc(u*sizeof(int));
+}
+void setarray(struct myarray* a)
+{
+int n;
+for(int i=0;i< a->u_size;i++)
+{
+scanf("%d",&n);
+a->ptr[i]=n;
+}
+}
+void show(struct myarray* a)
+{
+for(int i=0;i< a->u_size;i++)
+{
+printf("%d ",a->ptr[i]);
+}
+printf("\n");
+}
+void insert(struct myarray* a,int x,int v)
+{
+for(int i= a->u_size;i>=x;i--)
+{
+if(i==x)
+{
+a->ptr[x]=v;
+break;
+}
+a->ptr[i]=a->ptr[i-1];
+}
+a->u_size=a->u_size+1;
+}
+int main()
+{
+struct myarray marks;
+myarray(&marks,100,5);
+setarray(&marks);
+show(&marks);
+insert(&marks,2,55);
+show(&marks);
+return 0;
+}
