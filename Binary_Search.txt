@@ -1,0 +1,42 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+int binary(int ar[],int size,int element)
+{
+	int l=0;
+	int h=size-1;
+	int mid;
+	while(l<=h)
+	{
+	mid=(l+h)/2;
+	if(ar[mid]==element)
+	{
+		return mid;
+	}
+	else if(ar[mid]<element)
+	{
+	 l=mid+1;	
+	}
+	else
+	{
+		h=mid-1;
+	}
+}
+return -1;
+}
+int main()
+{
+	int b,size,element,ar[]={12,33,44,55,77,88,99,109,203,312};
+  size=sizeof(ar)/sizeof(int);
+  element=109;
+b=binary(ar,size,element);
+if(b>=0)
+{
+	cout<<"Found at "<<b;
+}
+else
+{
+	cout<<"Not found";
+}
+return 0;
+}
