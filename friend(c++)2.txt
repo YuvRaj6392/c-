@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+class y;
+class x
+{
+int val1;
+public:
+void setdata(int data)
+{
+val1=data;
+}
+friend void add(x,y);
+};
+class y
+{
+int val2;
+public:
+void setdata(int data)
+{
+val2=data;
+}
+friend void add(x,y);
+};
+void add(x o1,y o2)
+{
+	cout<<o1.val1+o2.val2;
+}
+int main()
+{
+x a;
+a.setdata(23);
+y b;
+b.setdata(78);
+add(a,b);
+return 0;
+}
