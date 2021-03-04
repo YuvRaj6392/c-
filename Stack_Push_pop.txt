@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct stac
+{
+int size;
+int top;
+int *arr;
+};
+int IsEmpty(struct stac *ptr)
+{
+if(ptr->top==-1)
+{
+	return 1;
+}
+return 0;
+}
+int IsFull(struct stac *ptr)
+{
+	if(ptr->top==(ptr->size-1))
+	{
+		return 1;
+	}
+	return 0;
+}	
+void push(struct stac *ptr,int val)
+{
+	if(IsFull(ptr))
+	{
+		printf("Stack is full\n");
+	}
+	else
+	{
+	ptr->top=ptr->top+1;
+	ptr->arr[ptr->top]=val;
+	}
+}
+void pop(struct stac *ptr)
+{
+	if(IsEmpty(ptr))
+		{
+			printf("Stack underflow\n");
+		}
+	else
+	{
+	int val=ptr->arr[ptr->top];
+	ptr->top=ptr->top-1;
+	printf("Successfully deleted %d\n",val);
+	}
+}
+void print(struct stac *ptr)
+{
+	for(int i=0;i<=ptr->top;i++)
+	{
+		printf("%d\n",ptr->arr[i]);
+	}
+	printf("--------------\n");
+}
+int main()
+{
+struct stac *s;
+s=(struct stac *)malloc(sizeof(struct stac));
+s->size=5;
+s->top=-1;
+s->arr=(int *)malloc(s->size*sizeof(int));
+push(s,10);
+push(s,20);
+push(s,30);
+push(s,40);
+push(s,50);
+print(s);
+pop(s);
+pop(s);
+print(s);
+push(s,90);
+print(s);
+pop(s);
+pop(s);
+pop(s);
+pop(s);
+pop(s);
+print(s);
+
+return 0;
+}
