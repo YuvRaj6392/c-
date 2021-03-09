@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node *next;
+};
+int IsEmpty(struct node *top)
+{
+if(top==NULL)
+{
+	return 1;
+}
+return 0;
+}
+int isFull(struct node *top)
+{
+	struct node *ptr=(struct node *)malloc(sizeof(struct node));
+	if(ptr==NULL)
+	{
+		return 1;
+	}
+	return 0;
+}
+struct node * push(struct node *top,int x)
+{
+struct node *ptr=(struct node *)malloc(sizeof(struct node));
+if(isFull(top))
+{
+	printf("Stack overflow");
+}
+else
+{
+	ptr->data=x;
+	ptr->next=top;
+	top=ptr;
+	return ptr;
+}	
+}
+struct node * pop(struct node *top)
+{
+if(IsEmpty(top))
+{
+	printf("stack underflow\n");
+	return top;
+}
+else
+{
+struct node *n=top;
+int x=n->data;
+top=top->next;
+printf("%d has been deleted\n",x);
+return top;
+}
+}
+void traversal(struct node *top)
+{
+struct node *ptr=top;
+printf("Traversing begins\n");
+while(ptr!=NULL)
+{
+	printf("%d\n",ptr->data);		
+	ptr=ptr->next;
+}
+printf("----------------\n");
+}
+void peek(struct node *top,int pos)
+{
+	struct node *ptr=top;
+	for(int i=0;i<pos-1;i++)
+	{
+		ptr=ptr->next;
+	}
+	if(ptr!=NULL)
+	{
+	printf("%d\n",ptr->data);
+	}
+	else
+	{
+		printf("error\n");
+	}
+}
+void stacktop(struct node *top)
+{
+	printf("%d\n",top->data);
+}
+void stackbottom(struct node *top)
+{
+	struct node *ptr=top;
+	while(ptr->next!=NULL)
+	{
+		ptr=ptr->next;
+	}
+	printf("%d\n",ptr->data);
+}
+int main()
+{
+struct node *top;
+top=NULL;
+top=push(top,56);
+top=push(top,67);
+top=push(top,96);
+top=push(top,89);
+top=push(top,101);
+traversal(top);
+peek(top,1);
+return 0;
+}
