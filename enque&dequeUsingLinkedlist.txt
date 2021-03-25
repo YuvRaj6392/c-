@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct node *f=NULL;
+struct node *r=NULL;
+struct node 
+{
+int data;
+struct node *next;
+};
+void deque1()
+{
+	struct node *ptr=f;
+	if(f==NULL)
+	{
+		printf("deque failed, queue was alreadt empty");
+	}
+	else
+	{
+		f=f->next;
+		printf("Successfully deleted %d\n",ptr->data);
+		free(ptr);
+	}
+}
+void enque(int val)
+{
+	struct node *n=(struct node *)malloc(sizeof(struct node));
+	n->data=val;
+	n->next=NULL;
+	if(n==NULL)
+	{
+		printf("Sorry, you cannot insert more!");
+	}
+	else
+	{
+		if(f==NULL)
+		{
+			f=r=n;
+			printf("There was a successfull insertion\n");
+		}
+		else
+		{
+			r->next=n;
+			r=r->next;
+			printf("There was a successfull insertion\n");
+		}
+	}
+}
+void traversal()
+{
+	struct node *ptr=f;
+	while(ptr!=NULL)
+	{
+		printf("%d\n",ptr->data);
+		ptr=ptr->next;
+	}
+}
+int main()
+{
+enque(56);
+enque(67);
+enque(80);
+enque(90);
+enque(100);
+deque1();
+traversal();
+return 0;
+}
