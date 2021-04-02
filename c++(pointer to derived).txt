@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+class base
+{
+public:
+int var;
+void display()
+{
+cout<<"The value of base class is "<<var<<endl;
+}
+};
+class derived : public base
+{
+public:
+int var2;
+void display()
+{
+cout<<"The value of derived class is "<<var2<<endl;
+}
+};
+int main()
+{
+base *obj;
+base obj_base;
+derived obj_derived;
+obj=&obj_derived;
+obj->var=30;
+obj->display();
+derived *der;
+der=&obj_derived;
+der->var2=9800;
+der->var=32;
+der->display();
+obj->display();
+
+return 0;
+}
