@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+class base
+{
+protected:
+string name;
+float rating;
+public:
+base(string s,float r)
+{
+name=s;
+rating=r;
+}
+virtual void display()=0;
+};
+class derived : public base
+{
+	int id;
+	public:
+	derived(string s,float r,int i) : base(s,r)
+	{
+		id=i;
+	}
+	void display()
+	{
+		cout<<"name= "<<name<<endl;
+		cout<<"rating= "<<rating<<endl;
+		cout<<"id= "<<id<<endl;
+	}
+};
+int main()
+{
+base *p;
+derived d1("yuvraj",1990,21);
+p=&d1;
+p->display();
+return 0;
+}
