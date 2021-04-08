@@ -10,20 +10,18 @@ void printarray(int a[],int n)
 }
 void insertionsort(int a[],int n)
 {
-	int key,j;
-	//loop for passes
-	for(int i=1;i<n-1;i++)
+int key,j;
+for(int i=1;i<n;i++)
+{
+	key=a[i];
+	j=i-1;
+	while(j>=0 && a[j]>key)
 	{
-		key=a[i];
-		j=i-1;
-		while(j>=0 && a[j]>key)
-		{
-			a[j+1]=a[j];
-			j--;
-		}
-		a[j+1]=key;
+		a[j+1]=a[j];
+		j--;
 	}
-			
+	a[j+1]=key;
+}
 }
 int main()
 {
